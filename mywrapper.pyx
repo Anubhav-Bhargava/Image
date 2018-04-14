@@ -1,9 +1,11 @@
+from libcpp.string cimport string
+
 cdef extern from "ela_final.cpp":    
-    void func (char* filename)
+    string func (string filename)
 
 
 def myfunc(filename):
-  func(filename)
+  return func(filename)
 
 
  

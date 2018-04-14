@@ -10,16 +10,13 @@ using namespace cv;
 const int scale =30,quality=90;
 
 
-cv::Mat img,
-    compressed_image;
-
-
-void func(char* filename){
+string func(string filename){
  
-	img=imread(filename);
+	Mat img=imread(filename);
 	// namedWindow( "Display window", WINDOW_AUTOSIZE );
 	imshow( "Display window", img );
 	waitKey(0);    
+	cvDestroyAllWindows();
 
    	//Set up the parameters for JPEG compression
 	vector<int> params;
@@ -72,6 +69,8 @@ void func(char* filename){
 		 }
 	}
 
-	 imwrite("processed_image.jpg",output_img);
-	//return output_img;
+	string output_filename="processed_"+filename;
+
+	imwrite(output_filename,output_img);
+	return output_filename;
 }
