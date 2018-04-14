@@ -1,15 +1,27 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <iostream>
-#include <vector>
+#include <vector> 
+#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 using namespace cv;
+
 
 const int scale =30,quality=90;
 
 
-Mat elaProcessImage(Mat img){
-	//Set up the parameters for JPEG compression
+cv::Mat img,
+    compressed_image;
 
+
+void func(char* filename){
+ 
+	img=imread(filename);
+	// namedWindow( "Display window", WINDOW_AUTOSIZE );
+	imshow( "Display window", img );
+	waitKey(0);    
+
+   	//Set up the parameters for JPEG compression
 	vector<int> params;
 	params.push_back(CV_IMWRITE_JPEG_QUALITY);
 	params.push_back(quality);
@@ -60,19 +72,6 @@ Mat elaProcessImage(Mat img){
 		 }
 	}
 
-	return output_img;
-}
-
-
-
-int main ()
-{
-
-	//Load Image
-    Mat img = imread("image.jpg") ;
-    //Perform ELA on the loaded image
-    Mat prcessedImage = elaProcessImage(img);
-    //Save Image
-    imwrite("processed_image.jpg",prcessedImage);
-    return EXIT_SUCCESS;
+	 imwrite("processed_image.jpg",output_img);
+	//return output_img;
 }
