@@ -11,7 +11,7 @@ f.add_subplot(1, 2, 1)
 plt.imshow(mobile_img)
 f.add_subplot(1, 2, 2)
 plt.imshow(photoshop_img)
-f.text(.5, .05, 'Mobile Image & Photoshoped Image', ha='left')
+f.text(.5, .05, 'Mobile Image & Photoshoped Image', ha='center')
 plt.axis('off')
 
 plt.show()
